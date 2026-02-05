@@ -265,23 +265,23 @@ def parse_subdir(log_dir):
 	for file in os.listdir(log_dir):
 		# system & sched metric
 		if file == 'rps.txt':
-			raw_data['rps'] = np.loadtxt(log_dir+'/'+file, dtype=np.float)
+			raw_data['rps'] = np.loadtxt(log_dir+'/'+file, dtype=np.float64)
 			continue
 		elif file.startswith('e2e'):
 			# latency data
 			percent = re.sub('e2e_lat_', '', file)
 			percent = re.sub('.txt', '', percent)
-			raw_data['latency'][percent] = np.loadtxt(log_dir+'/'+file, dtype=np.float)
+			raw_data['latency'][percent] = np.loadtxt(log_dir+'/'+file, dtype=np.float64)
 			continue
 		elif file.startswith('cpu_limit'):
 			service = file.replace('cpu_limit_', '').replace('.txt', '')
 			assert service in Services
-			raw_data['cpu_limit'][service] = np.loadtxt(log_dir+'/'+file, dtype=np.float)
+			raw_data['cpu_limit'][service] = np.loadtxt(log_dir+'/'+file, dtype=np.float64)
 			continue
 		elif file.startswith('replica') and 'replica_cpu_limit' not in file:
 			service = file.replace('replica_', '').replace('.txt', '')
 			assert service in Services
-			raw_data['replica'][service] = np.loadtxt(log_dir+'/'+file, dtype=np.float)
+			raw_data['replica'][service] = np.loadtxt(log_dir+'/'+file, dtype=np.float64)
 			continue
 
 		# per service docker metrics
@@ -292,7 +292,7 @@ def parse_subdir(log_dir):
 		service = file.replace(metric_stat + '_', '').replace('.txt', '')
 		assert service in Services
 		# print('Metric stat: %s, service: %s' %(metric_stat, service))
-		raw_data[metric_stat][service] = np.loadtxt(log_dir+'/'+file, dtype=np.float)
+		raw_data[metric_stat][service] = np.loadtxt(log_dir+'/'+file, dtype=np.float64)
 
 	assert 'rps' in raw_data
 

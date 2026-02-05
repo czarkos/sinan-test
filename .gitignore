@@ -1,0 +1,42 @@
+# Virtual environments
+.venv*/
+
+# Training data (large .npy files)
+*.npy
+docker_swarm/logs/collected_data/users_*/
+docker_swarm/logs/collected_data/dataset/
+surrogate/data/
+ml_docker_swarm/_surrogate_test/
+
+# Trained models (can be regenerated)
+*.joblib
+*.pkl
+*.pth
+*.params
+*.model
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Generated plots (can be regenerated)
+*.png
+ml_docker_swarm/distribution_figs/
+
+# Grid search outputs
+ml_docker_swarm/*.csv
+
+# Logs
+*.log
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
