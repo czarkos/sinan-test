@@ -2,11 +2,11 @@
 .venv*/
 
 # Training data (large .npy files)
-*.npy
-docker_swarm/logs/collected_data/users_*/
-docker_swarm/logs/collected_data/dataset/
-surrogate/data/
-ml_docker_swarm/_surrogate_test/
+#*.npy
+#docker_swarm/logs/collected_data/users_*/
+#docker_swarm/logs/collected_data/dataset/
+#surrogate/data/
+#ml_docker_swarm/_surrogate_test/
 
 # Trained models (can be regenerated)
 *.joblib
